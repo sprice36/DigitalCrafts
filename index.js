@@ -30,8 +30,15 @@ app.get('/contacts/:id', (req,res) => {
  let contact = contacts.users.find((user) => {
      return user.id === id;
  });
- res.send(contact);
 
+ if (contact) {
+     res.render('contact-detail', {
+     contact
+ });
+ //res.send(contact);
+}else{
+  res.redirect('/');
+} 
 });
 
 
