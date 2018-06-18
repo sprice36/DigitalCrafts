@@ -10,8 +10,9 @@ app.set('view engine', '.hbs');
 app.get('/', (req, res) => {
   //  res.send('hey its the home page');
   res.render('home', {
+      layout: 'homepage', 
       message: "hello handlebars",
-      headerText : "contacts app home page"
+   //   headerText : "contacts app home page"
   });
 });
 
