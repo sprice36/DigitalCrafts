@@ -1,0 +1,11 @@
+<h4>Here are your contacts</h4>
+
+<ul>
+{{#each contactsArray}}
+  <li>
+  <a href="contacts/{{id}}">
+{{firstName}} {{lastName}}
+   </a>
+   </li>
+{{/each}}
+</ul>
