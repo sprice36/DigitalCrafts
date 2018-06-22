@@ -31,8 +31,15 @@ function searchByTitle(search){
     return db.any("SELECT * FROM TODOS WHERE TITLE ILIKE '%$1#%' ", [search]);
 }
 
-
+function deleteByID(id){
+    return db.any('DELETE FROM TODOS WHERE id = $1' , [id]);
+}
 /*
+deleteByID(4) 
+ .then((data) => {console.log(data); })
+ .catch((error)  => {console.log(error); });
+
+
 
 getOne(1)
     .then(function(data) {console.log(data); })
@@ -58,5 +65,6 @@ module.exports = {
      getAll,
      getPending,
      getFinished,
-     searchByTitle
+     searchByTitle,
+     deleteByID  
 };
