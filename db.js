@@ -19,6 +19,10 @@ function getAll(){
     return db.any('SELECT * FROM todos');
 }
 
+function getPending(){
+     return db.any('SELECT * from todos WHERE isDone= false');   
+}
+
 getOne(1)
     .then(function(data) {
             // success;
@@ -34,9 +38,15 @@ getAll()
   .catch((error) => {console.log(error) ;});
     
 
+ 
+getPending()
+.then((data) => {console.log(data) ;})
+.catch((error) => {console.log(error) ;});
+   
 //getTodo(2);
 
 module.exports = {
     //getOne
-     getAll
+     //getAll
+     getPending
 };
