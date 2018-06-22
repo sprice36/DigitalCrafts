@@ -38,6 +38,10 @@ function deleteByID(id){
 function setFinished(id, isDone){
     return db.result('update todos set isDone = $1 where id = $2', [isDone, id]);
 }
+
+function setTitle(id, newTitle){
+    return db.result("update todos set title = '$1#' where id =$2", [newTitle, id] );
+}
 /*
 deleteByID(4) 
  .then((data) => {console.log(data); })
@@ -66,8 +70,12 @@ getFinished()
   setFinished(3, true)
   .then((data) => {console.log(data) ;})
   .catch((error) => {console.log(error) ;});
- */    
+     
 
+setTitle(3, 'somethingnew')
+.then((data) => {console.log(data) ;})
+.catch((error) => {console.log(error) ;});
+ */  
 module.exports = {
      getOne,
      getAll,
@@ -75,5 +83,6 @@ module.exports = {
      getFinished,
      searchByTitle,
      deleteByID,
-     setFinished
+     setFinished ,
+     setTitle
 };
