@@ -23,30 +23,40 @@ function getPending(){
      return db.any('SELECT * from todos WHERE isDone= false');   
 }
 
+function getFinished(){
+    return db.any('SELECT * from todos WHERE isDone= true');   
+}
+
+function searchByTitle(search){
+    return db.any("SELECT * FROM TODOS WHERE TITLE ILIKE '%$1#%' ", [search]);
+}
+
+
+/*
+
 getOne(1)
-    .then(function(data) {
-            // success;
-            console.log(data);
-        })
-        .catch(function(error) {
-            // error;
-            console.log(error);
-        });
+    .then(function(data) {console.log(data); })
+    .catch(function(error) {console.log(error); });
 
 getAll()
   .then((data) => {console.log(data) ;})
   .catch((error) => {console.log(error) ;});
     
-
  
 getPending()
 .then((data) => {console.log(data) ;})
 .catch((error) => {console.log(error) ;});
    
-//getTodo(2);
+getFinished()
+.then((data) => {console.log(data) ;})
+.catch((error) => {console.log(error) ;});
+   */ 
+
 
 module.exports = {
-    //getOne
-     //getAll
-     getPending
+     getOne,
+     getAll,
+     getPending,
+     getFinished,
+     searchByTitle
 };
