@@ -11,9 +11,12 @@ const cn = {
 
 const db = pgp(cn);
 
-function getTodo(id){
-    db.any('SELECT * FROM todos WHERE id = $1', [id])
-        .then(function(data) {
+function getOne(id){
+     return db.oneOrNone('SELECT * FROM todos WHERE id = $1', [id])
+} 
+
+getOne(1)
+    .then(function(data) {
             // success;
             console.log(data);
         })
@@ -22,10 +25,10 @@ function getTodo(id){
             console.log(error);
         });
     
-    }
+    
 
 //getTodo(2);
 
 module.exports = {
-    getTodo
+    getOne
 };
