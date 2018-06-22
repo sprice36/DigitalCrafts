@@ -34,6 +34,10 @@ function searchByTitle(search){
 function deleteByID(id){
     return db.any('DELETE FROM TODOS WHERE id = $1' , [id]);
 }
+
+function setFinished(id, isDone){
+    return db.result('update todos set isDone = $1 where id = $2', [isDone, id]);
+}
 /*
 deleteByID(4) 
  .then((data) => {console.log(data); })
@@ -57,8 +61,12 @@ getPending()
 getFinished()
 .then((data) => {console.log(data) ;})
 .catch((error) => {console.log(error) ;});
-   */ 
+  
 
+  setFinished(3, true)
+  .then((data) => {console.log(data) ;})
+  .catch((error) => {console.log(error) ;});
+ */    
 
 module.exports = {
      getOne,
@@ -66,5 +74,6 @@ module.exports = {
      getPending,
      getFinished,
      searchByTitle,
-     deleteByID  
+     deleteByID,
+     setFinished
 };
