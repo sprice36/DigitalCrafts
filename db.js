@@ -35,12 +35,12 @@ function deleteByID(id){
     return db.any('DELETE FROM TODOS WHERE id = $1' , [id]);
 }
 
-function setFinished(id, isDone){
-    return db.result('update todos set isDone = $1 where id = $2', [isDone, id]);
+function setFinished(id, isdone){
+    return db.result('update todos set isdone = $1 where id = $2', [isdone, id]);
 }
 
-function setTitle(id, newTitle){
-    return db.result("update todos set title = '$1#' where id =$2", [newTitle, id] );
+function setTitle(id, title){
+    return db.result("update todos set title = '$1#' where id =$2", [title, id] );
 }
 
 function addTitle(title){
