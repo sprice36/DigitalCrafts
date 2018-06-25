@@ -42,6 +42,11 @@ function setFinished(id, isDone){
 function setTitle(id, newTitle){
     return db.result("update todos set title = '$1#' where id =$2", [newTitle, id] );
 }
+
+function addTitle(title){
+   return db.one("insert into Todos (title, isdone) values ('$1#', false ) returning id", [title]); 
+
+}
 /*
 deleteByID(4) 
  .then((data) => {console.log(data); })
@@ -75,7 +80,12 @@ getFinished()
 setTitle(3, 'somethingnew')
 .then((data) => {console.log(data) ;})
 .catch((error) => {console.log(error) ;});
- */  
+  
+
+addTitle('dosomethingnew')
+.then((data) => {console.log(data) ;})
+.catch((error) => {console.log(error) ;}); 
+*/  
 module.exports = {
      getOne,
      getAll,
@@ -84,5 +94,6 @@ module.exports = {
      searchByTitle,
      deleteByID,
      setFinished ,
-     setTitle
+     setTitle ,
+     addTitle
 };

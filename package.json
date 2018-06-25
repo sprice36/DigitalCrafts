@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js", 
+    "resetdb" : "dropdb todoApp; createdb todoApp; psql -d todoApp -f schema.sql ; psql -d todoApp -f dummyData.sql ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
