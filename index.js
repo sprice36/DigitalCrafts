@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const Todo = require('./db');
 
 const expressHbs = require('express-handlebars');
@@ -9,6 +12,7 @@ app.set('view engine', '.hbs');
 
 const static = express.static;
 app.use(static('public'));
+
 
 app.get('/', (req, res) => {
     Todo.getAll()
@@ -22,14 +26,30 @@ app.get('/', (req, res) => {
       .catch((error) => {console.log(error); });
 });
 
+app.get('/new', (req, res) => {
+    res.render('todoCreatePage');
+});
+
+app.post('/new' , (req, res) => {
+    // res.send('form is submitted');
+    Todo.addTitle(req.body.title)
+      .then((data) => {
+          console.log(data);
+          res.send(data);
+      })
+});
+
+
 app.get('/:id', (req,res) =>{
      Todo.getOne(req.params.id)
      .then((data) => {
         console.log(data);
-        res.send(data);
-        //res.render('todo-detail-page' , data);
+       // res.send(data);
+        res.render('todoDetail' , data);
     })
     .catch((error) => {console.log(error); });
 });
+
+
 
 app.listen(4000);

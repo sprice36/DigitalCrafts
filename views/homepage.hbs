@@ -1,5 +1,8 @@
 <h1>get it done</h1>
 
 {{#each todos}} <!-- #each this if you give it no label in res.render -->
-<p>{{title}} : {{isdone}} </p> 
+<p>
+    <a href="/{{id}}">
+   {{title}} : </a> 
+    {{isdone}} </p> 
 {{/each}}
