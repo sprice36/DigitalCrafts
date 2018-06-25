@@ -34,11 +34,11 @@ app.post('/new' , (req, res) => {
     // res.send('form is submitted');
     Todo.addTitle(req.body.title)
       .then((data) => {
-          console.log(data);
-          res.send(data);
+          //console.log(data);
+          //res.send(data);
+            res.redirect(`/${data.id}`);
       })
 });
-
 
 app.get('/:id', (req,res) =>{
      Todo.getOne(req.params.id)
@@ -49,6 +49,21 @@ app.get('/:id', (req,res) =>{
     })
     .catch((error) => {console.log(error); });
 });
+
+app.get("/:id/edit", (req, res) => {
+    res.render('todoEditPage');
+});
+
+app.post("/:id/edit" , (req, res) => {
+    // res.send('form is submitted');
+    Todo.setTitle(req.params.id, req.body.title)
+      .then((data) => {
+          console.log(data);
+          //res.send(data);
+            res.redirect(`/${req.params.id}`);
+      })
+});
+
 
 
 
