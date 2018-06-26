@@ -55,16 +55,23 @@ app.get("/:id/edit", (req, res) => {
 });
 
 app.post("/:id/edit" , (req, res) => {
-    // res.send('form is submitted');
+    let isdone = false;
+    if (req.body.finished){
+        isdone = true;
+    }
+    
     Todo.setTitle(req.params.id, req.body.title)
       .then((data) => {
-          console.log(data);
+
+        Todo.setFinished(req.params.id, isdone)
+            .then((data) => {
+                res.redirect(`/${req.params.id}`);
+            })
+        
+         //  console.log(data);
           //res.send(data);
-            res.redirect(`/${req.params.id}`);
+            
       })
 });
-
-
-
 
 app.listen(4000);
