@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const setupAuth = require('./auth');
+const ensureAuthenticated = require('./auth').ensureAuthenticated;
 
 const express = require('express');
 const app = express();
@@ -32,7 +33,7 @@ app.get('/', (req, res) => {
       .catch((error) => {console.log(error); });
 });
 
-app.get('/new', (req, res) => {
+app.get('/new', ensureAuthenticated, (req, res) => {
     res.render('todoCreatePage');
 });
 
