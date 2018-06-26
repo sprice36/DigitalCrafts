@@ -1,3 +1,8 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const setupAuth = require('./auth');
+
 const express = require('express');
 const app = express();
 
@@ -13,6 +18,7 @@ app.set('view engine', '.hbs');
 const static = express.static;
 app.use(static('public'));
 
+setupAuth(app);
 
 app.get('/', (req, res) => {
     Todo.getAll()
