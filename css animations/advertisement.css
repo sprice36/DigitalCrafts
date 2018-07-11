@@ -1,0 +1,18 @@
+.ad1{
+      width: 175px;
+      height: 200px;
+      background-image: url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/pizza-flyer-template-db2cfb08f6d3a74a3af186f4d7f1f7d3_screen.jpg?ts=1502392945');
+      background-size: contain;               
+      background-repeat: no-repeat;
+      margin: 0px;
+      border: 20 px;
+      padding: 20px;
+      animation: slide 4s linear infinite normal;
+}
+
+@keyframes slide {
+ 0%, 100% {
+       transform: translate(0,0);
+ }
+
+}
