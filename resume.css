@@ -49,8 +49,17 @@ margin: -19px;
     padding:0 px;
     margin:-41px;
     margin-right: 76px;
+    padding-bottom: 8px;
 }
 .affil-container{
    list-style: none;
 
 }
+
+.full-stack-container{
+    list-style: none;
+    padding-top :8px;
+   
+}
+
+
